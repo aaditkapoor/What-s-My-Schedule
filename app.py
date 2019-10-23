@@ -4,14 +4,12 @@ entry point of the app where the routes are defined
 
 from flask import Flask, request
 import random
-import requests
-from pymessenger.bot import Bot
+from chatbot.binder import *
 
 
 app = Flask(__name__)
-ACCESS_TOKEN = 'EAAjnZCya6LOoBAIkfgGse0oLcpvTKzviAAhbgbBx9jBdbOMLjjDv51amy2ajT7RSHBfZC809XWZB1Bpl2IbnmtZCeozyiCW0FNkvrLaUIYc4UgcdZAfAZApl5Ydk3vFmjZCxoV55NvzymiOi17RZBVBfm4IlXslNxCmVnmZCZBN5bJ7pEMEk0CPQQL'
 VERIFY_TOKEN = 'facebook_messenger_chatbot_schedule_python'
-bot = Bot(ACCESS_TOKEN)
+
 
 @app.route('/webhook', methods=['GET', 'POST'])
 def receive_message():
@@ -30,6 +28,9 @@ def receive_message():
                     recipient_id = message['sender']['id']
                     if message['message'].get('text'):
                         response_sent_text = get_message()
+
+                        # send the mesasage
+                        print(response_sent_text, recipient_id)
                         send_message(recipient_id, response_sent_text)
                 # if user sends us a GIF, photo,video, or any other non-text item
                     if message['message'].get('attachments'):
@@ -49,10 +50,7 @@ def verify_fb_token(token_sent):
     return 'Invalid verification token'
 
 
-def send_message(recipient_id, response):
-    #sends user the text message provided via input response parameter
-    bot.send_text_message(recipient_id, response)
-    return "success"
+
 
 def get_message():
     sample_responses = ["You are stunning!", "We're proud of you.", "Keep on being you!", "We're greatful to know you :)"]
