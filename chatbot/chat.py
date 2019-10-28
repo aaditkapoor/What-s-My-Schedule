@@ -74,7 +74,6 @@ class Chat:
                     self.parsed_message = give_example()
             else:
                 self.parsed_message = "Could not understand: " + self.message
-                raise TagNotFoundException("Could not find tag")
 
     @property
     def getParsedMessage(self):

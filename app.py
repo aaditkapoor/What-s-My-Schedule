@@ -17,6 +17,7 @@ def get_bot_response(message, sender_id):
     chat = Chat(message,sender_id)
     chat.parse()
     response = chat.getParsedMessage()
+    assert
     return response
 
 
