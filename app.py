@@ -5,6 +5,7 @@ entry point of the app where the routes are defined
 from flask import Flask, request
 import random
 from chatbot.binder import *
+from chatbot.chat import *
 
 
 app = Flask(__name__)
@@ -31,7 +32,9 @@ def receive_message():
 
                         # send the mesasage
                         print(response_sent_text, recipient_id)
-                        send_message(recipient_id, response_sent_text)
+                        chat = Chat(response_sent_text, recipient_id)
+                        chat.send_message(recipient_id)
+                        print("sent!")
                 # if user sends us a GIF, photo,video, or any other non-text item
                     if message['message'].get('attachments'):
                         response_sent_nontext = get_message()

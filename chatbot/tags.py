@@ -6,5 +6,16 @@ TAGS = {
     "list":"list",
     "stop":"stop",
     "about":"about",
-    "help":"help"
+    "help":"help",
+    "example":"example"
 }
+
+
+
+"""
+    custom exception for not finding a tag
+"""
+class TagNotFoundException(Exception):
+    def __init__(self, message):
+        pass
+
