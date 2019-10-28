@@ -1,4 +1,6 @@
 from flask import Flask, request
+from chatbot.chat import *
+from chatbot.binder import *
 import requests
 
 app = Flask(__name__)
@@ -8,10 +10,14 @@ VERIFY_TOKEN = 'facebook_messenger_python_token'
 PAGE_ACCESS_TOKEN = 'EAAQSnO4XhnEBAAVSdzi6lzRkeaw4e9QJuaR32yE3CZBiG6neZCHXFEPm92BDmgFCf97iWNDCdcsh1ZCbEosheDKg1NdRZAWaDYbAGi1bFXufnW0AUyKcRsWAKsoezwD7XaTP4iroPEpeeZANXxYxLYsirAB4ceoiq0uAfSaZCVZC1qTlV3ZAoywZA'
 
 
-def get_bot_response(message):
-    """This is just a dummy function, returning a variation of what
-    the user said. Replace this function with one connected to chatbot."""
-    return "This is a dummy response to '{}'".format(message)
+def get_bot_response(message, sender_id):
+    """
+        perform parsing here
+    """
+    chat = Chat(message,sender_id)
+    chat.parse()
+    response = chat.getParsedMessage()
+    return response
 
 
 def verify_webhook(req):
@@ -23,7 +29,7 @@ def verify_webhook(req):
 def respond(sender, message):
     """Formulate a response to the user and
     pass it on to a function that sends it."""
-    response = get_bot_response(message)
+    response = get_bot_response(message, sender)
     send_message(sender, response)
 
 

@@ -43,7 +43,7 @@ class Schedule:
 
 
 class Chat:
-    def __init__(self, message, id):
+    def __init__(self, message:str, id:str):
         # converting to lowercase for simple analysis
         self.message = message.lower()
         self.id = id
