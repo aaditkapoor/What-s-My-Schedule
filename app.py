@@ -29,10 +29,11 @@ def receive_message():
                     recipient_id = message['sender']['id']
                     if message['message'].get('text'):
                         response_sent_text = get_message()
+                        r_message = message['message'].get("text")
 
                         # send the mesasage
                         print(response_sent_text, recipient_id)
-                        chat = Chat(response_sent_text, recipient_id)
+                        chat = Chat(r_message, recipient_id)
                         chat.send_message(recipient_id)
                         print("sent!")
                 # if user sends us a GIF, photo,video, or any other non-text item
