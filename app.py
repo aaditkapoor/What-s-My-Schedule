@@ -37,6 +37,7 @@ def receive_message():
                     print(r_message, recipient_id)
                     chat = Chat(r_message, recipient_id)
                     chat.send_message(recipient_id)
+                    send_message(recipient_id, get_message())
                     print("id: ", recipient_id)
                     print("message: ", r_message)
                 # if user sends us a GIF, photo,video, or any other non-text item
