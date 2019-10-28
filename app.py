@@ -9,7 +9,7 @@ from chatbot.chat import *
 
 
 app = Flask(__name__)
-VERIFY_TOKEN = 'facebook_messenger_chatbot_schedule_python'
+VERIFY_TOKEN = 'facebook_messenger_chatbot_schedule_python_heroku'
 
 
 @app.route('/webhook', methods=['GET', 'POST'])
