@@ -31,7 +31,7 @@ def receive_message():
                     print(messaging)
                     recipient_id = message['sender']['id']
                     response_sent_text = get_message()
-                    r_message = message['message']
+                    r_message = message['message'].get("text")
 
                         # send the message
                     print(r_message, recipient_id)
