@@ -75,18 +75,13 @@ class Chat:
             else:
                 self.parsed_message = "Could not understand: " + self.message
 
-    @property
-    def getParsedMessage(self):
-        return self.parsed_message
 
-    @property
     def getScheduleObject(self):
         if (self.schedule_object):
             return self.schedule_object
         else:
             return None
 
-    @property
     def getLength(self):
         return len(self.message.split())
 

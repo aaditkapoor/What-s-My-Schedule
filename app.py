@@ -14,10 +14,9 @@ def get_bot_response(message, sender_id):
     """
         perform parsing here
     """
-    chat = Chat(message,sender_id)
+    chat = Chat(message,str(sender_id))
     chat.parse()
-    response = chat.getParsedMessage()
-    return response
+    return chat.parsed_message
 
 
 def verify_webhook(req):
@@ -84,3 +83,6 @@ def send_message(recipient_id, text):
     )
 
     return response.json()
+
+
+
